@@ -61,6 +61,7 @@ p,
 .text {
     color: var(--texto);
     font-size: clamp(10px, auto, 10px);
+    text-align: center;
 }
 
 img {
@@ -311,6 +312,18 @@ a {
 }
 
 
+.main-img img {
+    max-width: 450px;
+    width: 450px;
+    height: 550px;
+    max-height: 550px;
+    border-radius: 10px;
+    align-items: center;
+    object-fit: cover;
+    margin: 20px 0 20px;
+    border: 1px solid var(--border);
+}
+
 /* Animações main */
 @keyframes flipar {
 
@@ -498,7 +511,6 @@ a {
 /* Alinhamento sections */
 .sec {
     padding: 20px 20%;
-    background-color: var(--fundosecnav);
     margin: 20px 0;
     align-content: start;
     min-height: 40vh;
