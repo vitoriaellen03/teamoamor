@@ -129,11 +129,49 @@ document.addEventListener('DOMContentLoaded', function () {
             anos--;
         }
 
+
+        // Calcula o número de semanas e os dias restantes
+        const semanas = Math.floor(dias / 7);
+
         document.getElementById("contador").innerText =
-            `${anos} anos, ${meses} meses, ${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
+            `${anos} anos, ${meses} meses, ${semanas} semanas, ${dias} dias, ${horas} horas, ${minutos} minutos, ${segundos} segundos`;
     }
 
     // Atualiza o contador a cada segundo
     setInterval(atualizarContador, 1000);
 
+});
+
+
+
+document.addEventListener('DOMContentLoaded', function () {
+    function setupImageRotation(container) {
+        const images = container.querySelectorAll('img');
+        const numImages = images.length;
+
+        if (numImages > 1) {
+            let currentIndex = 0;
+
+            function showNextImage() {
+                images[currentIndex].classList.remove('active');
+                currentIndex = (currentIndex + 1) % numImages;
+                images[currentIndex].classList.add('active');
+            }
+
+            // Inicialmente esconder todas as imagens, exceto a primeira
+            images.forEach((img, index) => {
+                if (index !== 0) img.classList.remove('active');
+            });
+
+            images[0].classList.add('active'); // Mostrar a primeira imagem
+
+            // Trocar imagem a cada 3 segundos
+            setInterval(showNextImage, 3000);
+        } else if (numImages === 1) {
+            images[0].style.display = 'initial'; // Garantir que a única imagem seja visível
+        }
+    }
+
+    // Configura o efeito para cada contêiner de imagens
+    document.querySelectorAll('.imge').forEach(setupImageRotation);
 });
