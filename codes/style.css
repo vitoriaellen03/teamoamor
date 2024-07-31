@@ -313,12 +313,12 @@ a {
 
 .imge {
     text-align: center;
-    aling-content: center;
-    aling-items: center;
-    max-width: 450px;
+    max-width: 100%;
+
 }
 
 .imge img {
+    max-width: 450px;
     width: 100%;
     height: 100%;
     border-radius: 10px;
