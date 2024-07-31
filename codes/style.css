@@ -238,7 +238,12 @@ a {
 
 /* Resposividade Navgation */
 @media screen and (max-width: 768px) {
-
+    .nav {
+        justify-content: left;
+    }
+    footer .nav {
+        justify-content: center;
+    }
     /* ativo menu */
     .menu {
         display: none;
@@ -519,7 +524,7 @@ label {
     display: block;
 }
 
-/* Animação mensage */
+/* Animação mensege */
 .love-mensege h2.subtitle {
     opacity: 0;
     transition: opacity 2s ease;

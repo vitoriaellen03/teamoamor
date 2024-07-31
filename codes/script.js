@@ -194,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const subtitles = loveMensege.querySelectorAll('h2.subtitle');
 
     // Lista de senhas válidas
-    const validPasswords = ['Brayan', 'BRAYAN', 'brayan', '03082003', '03/08/2003'];
+    const validPasswords = ['Brayan', 'BRAYAN', 'brayan', '03082003'];
 
     // Adiciona um evento de clique ao ícone do cadeado
     cadeadoIcon.addEventListener('click', () => {
