@@ -143,7 +143,7 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
+// Imagens
 document.addEventListener('DOMContentLoaded', function () {
     function setupImageRotation(container) {
         const images = container.querySelectorAll('img');
@@ -163,15 +163,82 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (index !== 0) img.classList.remove('active');
             });
 
-            images[0].classList.add('active'); // Mostrar a primeira imagem
+            images[0].classList.add('active');
 
             // Trocar imagem a cada 3 segundos
             setInterval(showNextImage, 3000);
         } else if (numImages === 1) {
-            images[0].style.display = 'initial'; // Garantir que a única imagem seja visível
+            images[0].style.display = 'initial';
         }
     }
 
     // Configura o efeito para cada contêiner de imagens
     document.querySelectorAll('.imge').forEach(setupImageRotation);
+});
+
+
+
+// Cadeado
+document.addEventListener('DOMContentLoaded', function () {
+    // Seleciona o ícone do cadeado e o contêiner alicont
+    const cadeadoIcon = document.querySelector('.cadeado');
+    const alicont = document.querySelector('.alicont');
+
+    // Seleciona o ícone de fechar
+    const closeButton = document.getElementById('close');
+
+    // Seleciona o campo de senha, o formulário e a mensagem de amor
+    const senhaInput = document.getElementById('senha');
+    const form = document.querySelector('.form');
+    const loveMensege = document.querySelector('.love-mensege');
+    const subtitles = loveMensege.querySelectorAll('h2.subtitle');
+
+    // Lista de senhas válidas
+    const validPasswords = ['Brayan', 'BRAYAN', 'brayan', '03082003'];
+
+    // Adiciona um evento de clique ao ícone do cadeado
+    cadeadoIcon.addEventListener('click', () => {
+        // Alterna a classe 'active' na div alicont
+        alicont.classList.toggle('active');
+    });
+
+    // Adiciona um evento de clique ao ícone de fechar
+    closeButton.addEventListener('click', () => {
+        // Remove a classe 'active' da div alicont
+        alicont.classList.remove('active');
+        // Remove a classe 'default' do formulário
+        form.classList.remove('default');
+        // Remove a classe 'active' da mensagem de amor
+        loveMensege.classList.remove('active');
+        // Limpa o valor do campo de senha
+        senhaInput.value = '';
+
+        // Remove a classe de animação de todos os h2
+        subtitles.forEach(subtitle => {
+            subtitle.classList.remove('reveal');
+        });
+    });
+
+    // Adiciona um evento de input ao campo de senha
+    senhaInput.addEventListener('input', () => {
+        // Verifica se o valor do campo é uma das senhas válidas
+        if (validPasswords.includes(senhaInput.value)) {
+            // Adiciona a classe 'default' ao formulário
+            form.classList.add('default');
+            // Adiciona a classe 'active' à mensagem de amor
+            loveMensege.classList.add('active');
+
+            // Revela os h2 com um atraso
+            subtitles.forEach((subtitle, index) => {
+                setTimeout(() => {
+                    subtitle.classList.add('reveal');
+                }, index * 500); // Ajuste o atraso conforme necessário
+            });
+        } else {
+            // Remove a classe 'default' se a senha estiver incorreta
+            form.classList.remove('default');
+            // Remove a classe 'active' da mensagem de amor
+            loveMensege.classList.remove('active');
+        }
+    });
 });
